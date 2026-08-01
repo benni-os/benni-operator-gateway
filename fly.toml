@@ -1,0 +1,33 @@
+# Fly.io config — benni-operator-gateway
+# Deploy: set DEPLOY_TARGET=fly in repo vars + FLY_API_TOKEN in secrets.
+
+app = "benni-operator-gateway"
+primary_region = "iad"
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https   = true
+  auto_stop_machines  = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type       = "connections"
+    hard_limit = 100
+    soft_limit = 80
+
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[mounts]
+  source      = "benni_data"
+  destination = "/data"
+
+[env]
+  NODE_ENV = "production"
+  PORT     = "3000"
+  DB_PATH  = "/data/benni.db"
