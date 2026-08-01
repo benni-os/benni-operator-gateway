@@ -31,7 +31,7 @@ export class JulesUpstreamAuthError extends AppError {
   constructor(message = 'Jules upstream auth error') { super(message, 401, 'JULES_UPSTREAM_AUTH_ERROR'); this.name = 'JulesUpstreamAuthError'; }
 }
 export class JulesUpstreamAuthFailedError extends AppError {
-  constructor(message = 'Jules upstream auth failed') { super(message, 401, 'JULES_UPSTREAM_AUTH_FAILED'); this.name = 'JulesUpstreamAuthFailedError'; }
+  constructor(message = 'Jules upstream auth failed') { super(message, 502, 'JULES_UPSTREAM_AUTH_FAILED'); this.name = 'JulesUpstreamAuthFailedError'; }
 }
 export class JulesUpstreamNotFoundError extends AppError {
   constructor(message = 'Jules upstream not found') { super(message, 404, 'JULES_UPSTREAM_NOT_FOUND'); this.name = 'JulesUpstreamNotFoundError'; }

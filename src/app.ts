@@ -30,12 +30,13 @@ app.route('/jobs', jobsRouter);
 app.route('/capabilities', capabilitiesRouter);
 
 app.onError((err, c) => {
+  const reqId = c.get('requestId');
   if (err instanceof AppError) {
     return c.json(
-      { error: err.message, code: err.code },
+      { error: err.message, code: err.code, requestId: reqId },
       err.statusCode as 400 | 404 | 409 | 500
     );
   }
   logger.error({ err }, 'Unhandled error');
-  return c.json({ error: 'Internal server error', code: 'INTERNAL_ERROR' }, 500);
+  return c.json({ error: 'Internal server error', code: 'INTERNAL_ERROR', requestId: reqId }, 500);
 });

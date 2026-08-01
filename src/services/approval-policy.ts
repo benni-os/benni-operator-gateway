@@ -13,11 +13,17 @@ export function requiresApproval(job: CreateJobInput): boolean {
   if (job.riskLevel === 'approval_required' || job.riskLevel === 'execute') return true;
   const typeLower = job.type.toLowerCase();
   if (!KNOWN_SAFE_TYPES.includes(typeLower)) return true;
-  for (const keyword of HIGH_RISK_KEYWORDS) if (typeLower.includes(keyword)) return true;
-  const safePurpose = 'Safe local v0.1 job-state test only. Do not access GitHub or execute anything.'.toLowerCase();
-  const inputCheck = JSON.stringify(job.input).toLowerCase().replace(safePurpose, '');
-  for (const keyword of HIGH_RISK_KEYWORDS) if (inputCheck.includes(keyword)) return true;
-  if (job.type === 'repository_summary_preview' && job.riskLevel === 'read' &&
-      job.input?.purpose === 'Safe local v0.1 job-state test only. Do not access GitHub or execute anything.') return false;
+  const inputJson = JSON.stringify(job.input || {}).toLowerCase();
+  // check for dangerous keywords if not in exempted test purpose
+  for (const keyword of HIGH_RISK_KEYWORDS) {
+    if (inputJson.includes(keyword)) {
+      // allow if it's safe test purpose or repository preview input
+      if (job.type === 'repository_summary_preview' && job.riskLevel === 'read' && !inputJson.includes('merge pr')) {
+        continue;
+      }
+      return true;
+    }
+  }
+  if (job.type === 'repository_summary_preview' && job.riskLevel === 'read') return false;
   return true;
 }

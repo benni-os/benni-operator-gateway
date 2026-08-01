@@ -24,6 +24,8 @@ export function initializeDatabase() {
   `);
 }
 
+initializeDatabase();
+
 export function closeDatabaseForTesting() { db.close(); }
 
 export function recreateDatabaseForTesting() {

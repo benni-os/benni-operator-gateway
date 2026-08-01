@@ -89,10 +89,18 @@ describe('Job Service & Routes', () => {
   describe('Persistence Tests', () => {
     const tmpDbPath = path.join(os.tmpdir(), `benni-test-restart-${process.pid}.db`);
 
-    afterAll(() => {
+    afterAll(async () => {
+      const { closeDatabaseForTesting, recreateDatabaseForTesting } = await import('../src/lib/db.js');
+      delete process.env['DB_PATH'];
+      closeDatabaseForTesting();
+      recreateDatabaseForTesting();
       for (const suffix of ['', '-wal', '-shm']) {
         const filePath = `${tmpDbPath}${suffix}`;
-        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+        try {
+          if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+        } catch {
+          // ignore EBUSY on Windows test cleanup
+        }
       }
     });
 
