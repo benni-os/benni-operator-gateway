@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/benni-os/benni-operator-gateway/discussions
+    about: For questions, ideas, and general discussion — use Discussions instead of Issues.
+  - name: 🌐 Benni OS
+    url: https://github.com/benni-os
+    about: Explore the full Benni OS ecosystem.
