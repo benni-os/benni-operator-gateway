@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { requestId } from './lib/request-id.js';
+import { requestId, type RequestIdEnv } from './lib/request-id.js';
 import { logger } from './lib/logger.js';
 import { AppError } from './lib/errors.js';
 import { healthRouter } from './routes/health.js';
@@ -7,7 +7,7 @@ import { julesRouter } from './routes/jules.js';
 import { jobsRouter } from './routes/jobs.js';
 import { capabilitiesRouter } from './routes/capabilities.js';
 
-export const app = new Hono();
+export const app = new Hono<RequestIdEnv>();
 
 app.use('*', requestId());
 

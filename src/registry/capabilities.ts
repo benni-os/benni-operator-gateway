@@ -12,7 +12,7 @@ const RepositorySummaryPreviewOutput = z.object({
 });
 
 const GenericExecuteDraftInput = z.object({
-  payload: z.record(z.unknown()).describe('Arbitrary draft payload to be reviewed before execution'),
+  payload: z.record(z.string(), z.unknown()).describe('Arbitrary draft payload to be reviewed before execution'),
 });
 
 const GenericExecuteDraftOutput = z.object({

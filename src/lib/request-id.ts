@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import type { MiddlewareHandler } from 'hono';
 
-type RequestIdEnv = { Variables: { requestId: string } };
+export type RequestIdEnv = { Variables: { requestId: string } };
 
 export function requestId(): MiddlewareHandler<RequestIdEnv> {
   return async (c, next) => {
