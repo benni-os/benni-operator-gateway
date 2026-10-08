@@ -170,9 +170,12 @@ GATEWAY_API_KEY=your_secret_key
 APPROVAL_WEBHOOK_URL=https://your-endpoint/approval
 APPROVAL_TIMEOUT_MS=300000  # 5 minutes
 
-# JARVAS-2 Connector (optional)
-JARVAS2_API_URL=https://your-jarvas2-instance
-JARVAS2_API_KEY=your_jarvas2_key
+# Project Benjamin Connector (optional)
+BENJAMIN_API_URL=https://your-benjamin-instance
+BENJAMIN_API_KEY=your_benjamin_key
+# Legacy fallback:
+JARVAS2_API_URL=https://your-benjamin-instance
+JARVAS2_API_KEY=your_benjamin_key
 
 # GitHub Connector
 GITHUB_TOKEN=your_github_pat
@@ -224,7 +227,7 @@ npm run build && npm start
 ## 🗺️ Roadmap
 
 - [x] MCP HTTP gateway core
-- [x] JARVAS-2 connector
+- [x] Project Benjamin connector
 - [x] GitHub connector
 - [x] Human approval gate
 - [x] Built-in Control Plane (session state, ledger, checkpoints)
@@ -258,12 +261,13 @@ Highest-value contributions right now:
 | Product | Repo | Role | Status |
 |---|---|---|---|
 | 🧠 **Benni Master OS** | [benni-os/Benni-Master-OS](https://github.com/benni-os/Benni-Master-OS) | General Brain — sovereign orchestrator | 🟢 Live |
-| ⚡ **Benni Gravity** | [benni-os/Benni-gravity-0](https://github.com/benni-os/Benni-gravity-0) | Local operator runtime — agents, revenue, content | 🟢 Ativo |
+| ⚡ **Project Adam** | [benni-os/Project-Adam](https://github.com/benni-os/Project-Adam) | Local operator runtime — agents, revenue, content | 🟢 Ativo |
 | 🔌 **Operator Gateway** | [benni-os/benni-operator-gateway](https://github.com/benni-os/benni-operator-gateway) | Open-source MCP gateway — you are here | 🟢 MIT |
 | 🐍 **mcp-forge** | [benni-os/mcp-forge](https://github.com/benni-os/mcp-forge) | FastAPI-style Python MCP framework | 🟢 PyPI |
 | ⚡ **benni-nexus** | [benni-os/benni-nexus](https://github.com/benni-os/benni-nexus) | LLM gateway — route, balance, observe | 🟢 npm |
-| 🛠️ **Benni Control Plane** | MCP on Railway | NEXUS v5 — persistent memory layer | 🟢 Railway |
-| 🤖 **JARVAS-2** | [benni-os/jarvas-2](https://github.com/benni-os/jarvas-2) | Autonomous dispatch + Wave 6 billing | 🔥 Hot |
+| 🛠️ **Benni Control Plane** | MCP on Railway | Quad-Mesh State, RLS isolation & memory layer | 🟢 Live |
+| 🤖 **Project Benjamin** | [benni-os/Project-Benjamin](https://github.com/benni-os/Project-Benjamin) | Sovereign mechanical execution arm & zero-token I/O | 🔥 Hot |
+| 🌌 **Project Genesis** | [benni-os/benni-os-genesis](https://github.com/benni-os/benni-os-genesis) | Sovereign IDE & Execution Harness (com Creative Studio e MONOMO runtime nativos) | 🟢 Live |
 | 🛍️ **Modo Operador** | [benni-os/modo-operador](https://github.com/benni-os/modo-operador) | Produto BR — R$97 | 🟢 Live |
 
 <br/>

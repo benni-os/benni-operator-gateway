@@ -8,8 +8,8 @@
 
 import type { ConnectorModule, ToolDefinition, ToolResult } from '../../types/connector.js'
 
-const JARVAS2_BASE_URL = process.env.JARVAS2_BASE_URL ?? 'http://localhost:8000'
-const JARVAS2_API_KEY = process.env.JARVAS2_API_KEY ?? ''
+const JARVAS2_BASE_URL = process.env.BENJAMIN_BASE_URL ?? process.env.JARVAS2_BASE_URL ?? 'http://localhost:8000'
+const JARVAS2_API_KEY = process.env.BENJAMIN_API_KEY ?? process.env.JARVAS2_API_KEY ?? ''
 
 async function call(path: string, body: Record<string, unknown>): Promise<unknown> {
   const res = await fetch(`${JARVAS2_BASE_URL}${path}`, {
